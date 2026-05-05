@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: jaipur-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: jaipur
+      POSTGRES_USER: jaipur
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-jaipur-local-password}
+    volumes:
+      - jaipur-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jaipur -d jaipur"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - localnetwork
+
+  jaipur:
+    build: .
+    container_name: jaipur-game
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 8080
+      SESSION_SECRET: ${SESSION_SECRET:-change-this-jaipur-secret}
+      DATABASE_URL: postgres://jaipur:${POSTGRES_PASSWORD:-jaipur-local-password}@db:5432/jaipur
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8087:8080"
+    networks:
+      - localnetwork
+
+volumes:
+  jaipur-db-data:
+
+networks:
+  localnetwork:
+    external: true
+    name: localnetwork

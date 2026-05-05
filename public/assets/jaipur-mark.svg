@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Jaipur mark">
+  <defs>
+    <linearGradient id="a" x1="24" x2="96" y1="18" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f4c76d"/>
+      <stop offset=".52" stop-color="#d85b45"/>
+      <stop offset="1" stop-color="#1e8278"/>
+    </linearGradient>
+  </defs>
+  <rect width="108" height="108" x="6" y="6" fill="#fff7e7" rx="18"/>
+  <path fill="url(#a)" d="M60 14 92 34v38c0 20-14 31-32 36-18-5-32-16-32-36V34l32-20Z"/>
+  <path fill="#fff7e7" d="M36 70h48v12H36zM42 52h36v12H42zM50 34h20v12H50z"/>
+  <circle cx="60" cy="91" r="6" fill="#fff7e7"/>
+</svg>

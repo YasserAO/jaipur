@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jaipur</title>
+    <link rel="preload" href="/src/styles.css" as="style">
+    <link rel="stylesheet" href="/src/styles.css">
+  </head>
+  <body>
+    <div class="app">
+      <aside class="auth-panel" id="auth-panel">
+        <div class="brand">
+          <img src="/assets/jaipur-mark.svg" alt="" width="64" height="64">
+          <div>
+            <p>Jaipur</p>
+            <h1>Merchant Duel</h1>
+          </div>
+        </div>
+        <form id="auth-form" class="auth-form">
+          <div class="mode-switch" role="tablist" aria-label="Authentication mode">
+            <button class="active" type="button" id="show-login">Login</button>
+            <button type="button" id="show-register">Register</button>
+          </div>
+          <p class="auth-mode" id="auth-mode">Login to continue</p>
+          <label>
+            <span>Player name</span>
+            <input id="name" name="name" autocomplete="username" required maxlength="24" placeholder="Type your name">
+          </label>
+          <label>
+            <span>Password</span>
+            <input id="password" name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="At least 6 characters">
+          </label>
+          <div class="auth-actions">
+            <button class="primary" type="submit" id="auth-submit">Login</button>
+            <button type="button" id="register-now">Create account</button>
+          </div>
+          <p class="notice" id="auth-message" aria-live="polite"></p>
+        </form>
+      </aside>
+
+      <main class="table-shell" id="game-shell" hidden>
+        <header class="topbar">
+          <div class="player-chip">
+            <span id="me-name"></span>
+            <button type="button" id="logout">Logout</button>
+          </div>
+          <div class="invite-bar">
+            <button type="button" class="primary" id="create-game">Open Session</button>
+            <input id="invite-link" readonly placeholder="Invite link appears here">
+            <button type="button" id="copy-invite">Copy</button>
+          </div>
+        </header>
+
+        <section class="status-strip" aria-live="polite">
+          <div>
+            <span>Deck</span>
+            <strong id="deck-count">0</strong>
+          </div>
+          <div>
+            <span>Turn</span>
+            <strong id="turn-name">Waiting</strong>
+          </div>
+          <div>
+            <span>Game</span>
+            <strong id="game-code">None</strong>
+          </div>
+        </section>
+
+        <section class="score-row" id="score-row"></section>
+
+        <section class="market-board">
+          <div class="section-title">
+            <h2>Market</h2>
+            <div class="actions">
+              <button type="button" id="take-one">Take Selected</button>
+              <button type="button" id="take-camels">Take Camels</button>
+            </div>
+          </div>
+          <div class="market" id="market"></div>
+        </section>
+
+        <section class="hand-board">
+          <div class="section-title">
+            <h2>Your Hand</h2>
+            <div class="actions">
+              <select id="sell-type" aria-label="Goods type to sell"></select>
+              <input id="sell-count" type="number" min="1" max="7" value="1" aria-label="Number of cards to sell">
+              <button type="button" id="sell">Sell</button>
+              <button type="button" id="exchange">Exchange Selected</button>
+            </div>
+          </div>
+          <div class="cards" id="hand"></div>
+          <div class="herd-row">
+            <h3>Camels</h3>
+            <div class="cards compact" id="herd"></div>
+          </div>
+        </section>
+
+        <section class="token-board">
+          <div class="section-title">
+            <h2>Goods Stock</h2>
+            <span id="result"></span>
+          </div>
+          <div class="tokens" id="tokens"></div>
+        </section>
+
+        <aside class="log-panel">
+          <h2>Ledger</h2>
+          <ol id="log"></ol>
+        </aside>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

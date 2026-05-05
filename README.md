@@ -1,15 +1,21 @@
-# Jaipur
+# Jaipur Browser Game
 
-A small browser game about trading goods in a Jaipur market. Select matching goods to sell, collect camels for transport, and reach 120 rupees before the market closes.
+A containerized 1v1 browser implementation of Jaipur with login, invite sessions, realtime play, server-side rules, PostgreSQL persistence, and Web Audio effects.
 
-## Play
+## Run
 
-Open `index.html` in a browser.
+```bash
+docker compose up -d --build
+```
 
-## Rules
+The app listens on host port `8087` and container port `8080`. PostgreSQL runs as the `jaipur-db` container on the same Docker network and stores users plus login sessions in the `jaipur-db-data` volume.
 
-- Select one or more matching goods and trade them for rupees.
-- Trades of three or more goods earn a bonus.
-- Each traded good costs one camel to transport.
-- Select camels from the market to add them to your herd.
-- Reach 120 rupees within 12 days to win.
+## Rules Covered
+
+- 55-card Jaipur deck: goods plus 11 camels.
+- Private hands, separate camel herd, five-card market.
+- Take one good, take all market camels, exchange 2+ cards, or sell goods.
+- Premium goods require sales of at least two cards.
+- Goods token stacks and 3/4/5-card bonus tokens.
+- Endgame when three goods stacks are empty or the deck cannot refill the market.
+- Largest camel herd receives 5 gold, then the most gold wins.
