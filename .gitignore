@@ -2,3 +2,5 @@ node_modules/
 data/*.json
 !.gitkeep
 .env
+frontend/.next/
+frontend/out/
