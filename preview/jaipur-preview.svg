@@ -1,0 +1,26 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#F2EADB"/>
+  <rect x="28" y="24" width="1224" height="56" rx="8" fill="#FFF8EF" stroke="#C3B7A6"/>
+  <text x="48" y="60" fill="#1F2937" font-family="Arial, sans-serif" font-size="24" font-weight="700">Jaipur.vendra.cfd - PixiJS Board Preview</text>
+  <rect x="28" y="100" width="1224" height="592" rx="8" fill="#F7F0E4" stroke="#C3B7A6"/>
+  <g>
+    <text x="56" y="144" fill="#334155" font-family="Arial, sans-serif" font-size="20" font-weight="700">Market</text>
+    <rect x="56" y="160" width="146" height="198" rx="12" fill="#FFFBEB" stroke="#B7791F" stroke-width="3"/>
+    <rect x="218" y="160" width="146" height="198" rx="12" fill="#FFFBEB" stroke="#1D4ED8" stroke-width="3"/>
+    <rect x="380" y="160" width="146" height="198" rx="12" fill="#FFFBEB" stroke="#C2410C" stroke-width="3"/>
+    <rect x="542" y="160" width="146" height="198" rx="12" fill="#FFFBEB" stroke="#7C2D12" stroke-width="3"/>
+    <rect x="704" y="160" width="146" height="198" rx="12" fill="#FFFBEB" stroke="#854D0E" stroke-width="3"/>
+  </g>
+  <g>
+    <text x="56" y="420" fill="#334155" font-family="Arial, sans-serif" font-size="20" font-weight="700">Your Hand</text>
+    <rect x="56" y="438" width="146" height="198" rx="12" fill="#FFFBEB" stroke="#B91C1C" stroke-width="3"/>
+    <rect x="218" y="438" width="146" height="198" rx="12" fill="#FFFBEB" stroke="#64748B" stroke-width="3"/>
+    <rect x="380" y="438" width="146" height="198" rx="12" fill="#FFFBEB" stroke="#1D4ED8" stroke-width="3"/>
+    <rect x="542" y="438" width="146" height="198" rx="12" fill="#FFFBEB" stroke="#C2410C" stroke-width="3"/>
+  </g>
+  <rect x="956" y="160" width="250" height="476" rx="12" fill="#FFF8EF" stroke="#C3B7A6"/>
+  <text x="980" y="202" fill="#1F2937" font-family="Arial, sans-serif" font-size="22" font-weight="700">Realtime Duel</text>
+  <text x="980" y="238" fill="#334155" font-family="Arial, sans-serif" font-size="16">Static Next.js frontend</text>
+  <text x="980" y="266" fill="#334155" font-family="Arial, sans-serif" font-size="16">Express + Socket.IO backend</text>
+  <text x="980" y="294" fill="#334155" font-family="Arial, sans-serif" font-size="16">PixiJS v8 card rendering</text>
+</svg>

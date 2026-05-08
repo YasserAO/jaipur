@@ -13,6 +13,7 @@ import { Server } from "socket.io";
 const PORT = Number(process.env.PORT || 8080);
 const SESSION_SECRET = process.env.SESSION_SECRET || "dev-jaipur-secret";
 const DATABASE_URL = process.env.DATABASE_URL || "postgres://jaipur:jaipur@localhost:5432/jaipur";
+const FRONTEND_OUT = path.join(process.cwd(), "frontend", "out");
 
 const app = express();
 const server = http.createServer(app);
@@ -41,7 +42,7 @@ app.use(helmet({
 }));
 app.use(express.json({ limit: "64kb" }));
 app.use(sessionMiddleware);
-app.use(express.static(path.join(process.cwd(), "public")));
+app.use(express.static(FRONTEND_OUT));
 
 const io = new Server(server, {
   cors: { origin: false }
@@ -358,7 +359,7 @@ app.post("/api/games", requireLogin, (req, res) => {
 });
 
 app.get("/join/:id", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "public", "index.html"));
+  res.sendFile(path.join(FRONTEND_OUT, "index.html"));
 });
 
 io.engine.use((req, res, next) => {
@@ -410,6 +411,13 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     socketUsers.delete(socket.id);
   });
+});
+
+app.get("*", (req, res) => {
+  if (req.path.startsWith("/api") || req.path.startsWith("/socket.io")) {
+    return res.status(404).end();
+  }
+  return res.sendFile(path.join(FRONTEND_OUT, "index.html"));
 });
 
 await initDatabase();

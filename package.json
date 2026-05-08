@@ -4,8 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "dev:frontend": "next dev frontend",
+    "build:frontend": "next build frontend",
+    "start": "node server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -14,8 +16,13 @@
     "express": "^4.18.3",
     "express-session": "^1.18.0",
     "helmet": "^7.1.0",
+    "next": "^15.5.2",
     "nanoid": "^5.0.6",
+    "pixi.js": "^8.13.2",
     "pg": "^8.20.0",
-    "socket.io": "^4.7.5"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5"
   }
 }

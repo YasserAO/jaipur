@@ -1,21 +1,64 @@
 # Jaipur Browser Game
 
-A containerized 1v1 browser implementation of Jaipur with login, invite sessions, realtime play, server-side rules, PostgreSQL persistence, and Web Audio effects.
+Refactored to:
 
-## Run
+- `Next.js` static frontend (exported site)
+- `Node.js + Express` backend
+- `Socket.IO` realtime multiplayer
+- `PixiJS` canvas rendering for cards/board
+
+## Live Preview
+
+- URL: https://jaipur.vendra.cfd
+- Repo preview image:
+
+![Jaipur Preview](./preview/jaipur-preview.svg)
+
+## Stack
+
+- `next@15.5.2` (static export)
+- `pixi.js@8.13.2`
+- `express`, `socket.io`, `express-session`, `pg`
+
+## Local Development
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Run PostgreSQL (or use docker compose):
+
+```bash
+docker compose up -d db
+```
+
+3. Build frontend static output:
+
+```bash
+npm run build:frontend
+```
+
+4. Start backend server:
+
+```bash
+npm run dev
+```
+
+App default: `http://localhost:8080`
+
+## Full Container Run
 
 ```bash
 docker compose up -d --build
 ```
 
-The app listens on host port `8087` and container port `8080`. PostgreSQL runs as the `jaipur-db` container on the same Docker network and stores users plus login sessions in the `jaipur-db-data` volume.
+App default: `http://localhost:8087`
 
-## Rules Covered
+## Notes on Refactor
 
-- 55-card Jaipur deck: goods plus 11 camels.
-- Private hands, separate camel herd, five-card market.
-- Take one good, take all market camels, exchange 2+ cards, or sell goods.
-- Premium goods require sales of at least two cards.
-- Goods token stacks and 3/4/5-card bonus tokens.
-- Endgame when three goods stacks are empty or the deck cannot refill the market.
-- Largest camel herd receives 5 gold, then the most gold wins.
+- Express now serves static files from `frontend/out`.
+- `/join/:id` resolves to the same static entry and joins via client-side socket flow.
+- Card rendering was migrated from DOM cards to PixiJS graphics-based cards.
+- Audio cues were upgraded from single-tone beeps to short layered envelopes for clearer feedback.
